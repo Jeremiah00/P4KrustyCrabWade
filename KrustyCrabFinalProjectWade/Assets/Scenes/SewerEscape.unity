@@ -216,7 +216,7 @@ Transform:
   m_GameObject: {fileID: 91305000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.316431, y: 12.8, z: -23.884434}
-  m_LocalScale: {x: 1.6425, y: 1, z: 2.0315}
+  m_LocalScale: {x: 1.6425, y: 1, z: 6.047573}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -266,8 +266,7 @@ MonoBehaviour:
   Ceiling:
     serializedVersion: 2
     m_Bits: 128
-  speedText: {fileID: 0}
-  orientation: {fileID: 0}
+  orientation: {fileID: 1392500905}
   runningSpeed: 14
   walkingSpeed: 7
   JumpForce: 22
@@ -288,7 +287,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!1001 &425806979
 PrefabInstance:
@@ -591,8 +590,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.6956388, z: 1}
-  m_Center: {x: -4.3501735e-16, y: 0.9401355, z: 1.2312361e-15}
+  m_Size: {x: 1, y: 1.8228383, z: 1}
+  m_Center: {x: -1.0324654e-16, y: 0.8765357, z: 2.153136e-16}
 --- !u!1 &1339394789
 GameObject:
   m_ObjectHideFlags: 0

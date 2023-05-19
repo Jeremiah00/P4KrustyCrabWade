@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class MovePlayer : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class MovePlayer : MonoBehaviour
     public LayerMask Ceiling;
     bool ceiling;
 
-    
+    public TextMeshProUGUI speedText;
 
     //For my inputs
     float horziontalInput;
@@ -54,7 +56,7 @@ public class MovePlayer : MonoBehaviour
         ceiling = Physics.Raycast(transform.position, Vector3.up, Playerheight * 0.5f + 0.2f, Ceiling);
         horziontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        
+        SpeedTracker();
         if (!crounching)
             SpeedLimit();
 
@@ -152,7 +154,10 @@ public class MovePlayer : MonoBehaviour
 
     }
 
-    
+    void SpeedTracker()
+    {
+        speedText.text = "Speed " + moveSpeed;
+    }
 
     bool OnSlope()
     {

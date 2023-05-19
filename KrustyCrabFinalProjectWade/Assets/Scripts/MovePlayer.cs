@@ -12,7 +12,7 @@ public class MovePlayer : MonoBehaviour
     //Stuff for checking the ground 
     public float Playerheight;
     public float groundDrag;
-    bool grounded;
+    public bool grounded;
     public float gravityModifier;
     public LayerMask Ground;
     public LayerMask Ceiling;
@@ -28,7 +28,10 @@ public class MovePlayer : MonoBehaviour
     public Transform orientation;
     private float moveSpeed;
     public float runningSpeed;
+    bool running;
     public float walkingSpeed;
+    public bool wallRuning = false;
+    public float wallRunSpeed;
 
     Vector3 moveDirection;
     public float JumpForce;
@@ -56,13 +59,20 @@ public class MovePlayer : MonoBehaviour
         ceiling = Physics.Raycast(transform.position, Vector3.up, Playerheight * 0.5f + 0.2f, Ceiling);
         horziontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-      
+       
         if (!crounching)
             SpeedLimit();
 
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
             Jump();
         //grounded = false;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+            running = true;
+        else
+        {
+            running = false;
+        }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -91,7 +101,7 @@ public class MovePlayer : MonoBehaviour
             else if (crounching && rb.velocity.y == 0)
             {
                 rb.drag = 0;
-                rb.AddForce(Vector3.down * 10f, ForceMode.Force);
+                rb.AddForce(Vector3.down * 20f, ForceMode.Force);
                 rb.AddForce(moveDirection.normalized * moveSpeed * 50f, ForceMode.Force);
             }
 
@@ -144,8 +154,13 @@ public class MovePlayer : MonoBehaviour
 
     void MoveState()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (running)
             moveSpeed = runningSpeed;
+
+        else if (wallRuning)
+        {
+            moveSpeed = wallRunSpeed;
+        }
 
 
 
@@ -154,8 +169,7 @@ public class MovePlayer : MonoBehaviour
 
     }
 
-   
-
+ 
     bool OnSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, Playerheight * 0.5f + 0.3f))
@@ -173,3 +187,6 @@ public class MovePlayer : MonoBehaviour
 
 
 }
+
+
+

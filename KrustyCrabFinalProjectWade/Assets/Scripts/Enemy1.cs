@@ -11,6 +11,7 @@ public class Enemy1 : MonoBehaviour
     CharacterController enemy;
     public float speed;
     public float gravityModifier;
+    public float range;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<MovePlayer>();
@@ -23,7 +24,10 @@ public class Enemy1 : MonoBehaviour
     {
         Vector3 direction = player.transform.position - transform.position;
         Vector3 velocity = direction * speed;
-        enemy.Move(velocity * Time.deltaTime);
+        if(Vector3.Distance(player.transform.position, transform.position) <= range)
+        {
+            enemy.Move(velocity * Time.deltaTime);
+        }
 
     }
 }

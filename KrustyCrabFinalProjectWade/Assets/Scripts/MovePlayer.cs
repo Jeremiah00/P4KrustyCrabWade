@@ -55,7 +55,7 @@ public class MovePlayer : MonoBehaviour
     void Update()
     {
         // Fires raycast down to find if we are grounded
-        grounded = Physics.Raycast(transform.position, Vector3.down, Playerheight * 0.5f + 0.2f, Ground);
+        grounded = Physics.Raycast(transform.position, Vector3.down, Playerheight * 0.5f + 0.2f);
         ceiling = Physics.Raycast(transform.position, Vector3.up, Playerheight * 0.5f + 0.2f, Ceiling);
         horziontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");

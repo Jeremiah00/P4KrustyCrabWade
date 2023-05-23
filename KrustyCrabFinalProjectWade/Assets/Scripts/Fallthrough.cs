@@ -7,10 +7,14 @@ public class Fallthrough : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject street;
+    public GameObject floor;
+    MeshCollider meshCollider;
+    MeshCollider meshCollider2;
 
     void Start()
     {
-        //street = GetComponent<MeshCollider>();
+        meshCollider = street.GetComponent<MeshCollider>();
+        meshCollider2 = floor.GetComponent<MeshCollider>();
     }
 
     // Update is called once per frame
@@ -21,10 +25,11 @@ public class Fallthrough : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        MovePlayer player = other.GetComponent<MovePlayer>();
-        if(player)
+       
+        if (other.gameObject.GetComponent<MovePlayer>())
         {
-
+            meshCollider.enabled = false;
+            meshCollider.enabled = false;
         }
     }
 }

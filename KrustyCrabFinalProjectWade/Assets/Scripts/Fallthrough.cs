@@ -26,10 +26,11 @@ public class Fallthrough : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
        
-        if (other.gameObject.GetComponent<MovePlayer>())
+        if (other.gameObject.GetComponent<MovePlayer>() != null)
         {
+            print("Hi");
             meshCollider.enabled = false;
-            meshCollider.enabled = false;
+            meshCollider2.enabled = false;
         }
     }
 }

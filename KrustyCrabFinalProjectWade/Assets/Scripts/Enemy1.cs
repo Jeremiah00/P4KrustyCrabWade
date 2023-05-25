@@ -10,13 +10,13 @@ public class Enemy1 : MonoBehaviour
     MovePlayer player;
     CharacterController enemy;
     public float speed;
-    public float gravityModifier;
+    
     public float range;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<MovePlayer>();
         enemy = GetComponent<CharacterController>();
-        Physics.gravity *= gravityModifier;
+        
     }
 
     // Update is called once per frame

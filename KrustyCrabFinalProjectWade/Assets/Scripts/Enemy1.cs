@@ -12,6 +12,9 @@ public class Enemy1 : MonoBehaviour
     public float speed;
     
     public float range;
+    float timer;
+    bool isTimerRunning;
+    bool canMove;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<MovePlayer>();
@@ -22,11 +25,36 @@ public class Enemy1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = player.transform.position - transform.position;
-        Vector3 velocity = direction * speed;
-        if(Vector3.Distance(player.transform.position, transform.position) <= range)
+        Move();
+
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Player")
         {
-            enemy.Move(velocity * Time.deltaTime);
+            if(isTimerRunning)
+            {
+                timer -= Time.deltaTime;
+                canMove = false;
+            }
+            if (timer <= 0)
+            {
+                canMove = true; 
+            }
+
+        }
+    }
+    void Move()
+    {
+
+        if(canMove)
+        {
+            Vector3 direction = player.transform.position - transform.position;
+            Vector3 velocity = direction * speed;
+            if (Vector3.Distance(player.transform.position, transform.position) <= range)
+            {
+                enemy.Move(velocity * Time.deltaTime);
+            }
         }
 
     }

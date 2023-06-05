@@ -71,7 +71,7 @@ public class Enemy1 : MonoBehaviour
             Vector3 velocity = direction * speed;
             if (Vector3.Distance(player.transform.position, transform.position) <= range)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(velocity), 5f * Time.deltaTime);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 5f * Time.deltaTime);
                 enemy.Move(velocity * Time.deltaTime);
                 animator.SetTrigger("Player_Near");
             }

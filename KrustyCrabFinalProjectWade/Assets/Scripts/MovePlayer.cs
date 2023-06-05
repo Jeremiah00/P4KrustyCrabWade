@@ -90,24 +90,7 @@ public class MovePlayer : MonoBehaviour
             crounching = false;
         }
 
-        if (OnSlope())
-        {
-            rb.AddForce(GetSlopeDirection() * moveSpeed * 1f, ForceMode.Force);
-
-            if (rb.velocity.y > 0)
-            {
-                rb.AddForce(Vector3.down * 8f, ForceMode.Force);
-            }
-            else if (crounching && rb.velocity.y == 0)
-            {
-                rb.drag = 0;
-                rb.AddForce(Vector3.down * 20f, ForceMode.Force);
-                rb.AddForce(moveDirection.normalized * moveSpeed * 50f, ForceMode.Force);
-            }
-
-        }
-
-        rb.useGravity = !OnSlope();
+        
 
         if (grounded)
         {
@@ -169,24 +152,10 @@ public class MovePlayer : MonoBehaviour
 
     }
 
- 
-    bool OnSlope()
-    {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, Playerheight * 0.5f + 0.3f))
-        {
-            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-            return angle < maxAngle && angle != 0;
-        }
-        return false;
-    }
-
-    Vector3 GetSlopeDirection()
-    {
-        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
-    }
+ }
 
 
-}
+
 
 
 

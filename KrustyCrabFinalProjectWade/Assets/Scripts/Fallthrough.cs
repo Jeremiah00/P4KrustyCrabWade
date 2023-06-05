@@ -35,7 +35,7 @@ public class Fallthrough : MonoBehaviour
             
             meshCollider.enabled = false;
             meshCollider2.enabled = false;
-            lights.enabled = !lights.enabled;
+            lights.enabled = false;
         }
     }
 }
